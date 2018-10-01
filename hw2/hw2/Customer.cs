@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace hw2
 {
-    class Program
+    class Customer
     {
-        static void Main(string[] args)
+        public Customer(string name, string id, string flightId)
         {
 
         }
+            //git commit --date="Mon Oct 1 10:00 2018 +0100" -m "added customer class"
     }
 }

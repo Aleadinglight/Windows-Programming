@@ -20,8 +20,8 @@ namespace hw2
         
         public string toString()
         {
-            return "Name: " + name + "Id: " + id + "Flight Id: " + flightId;
+            return "Name: " + name + "\nId: " + id + "\nFlight Id: " + flightId;
         }
-            //git commit --date="Mon Oct 1 11:00 2018 +0100" -m "added customer class"
+            
     }
 }

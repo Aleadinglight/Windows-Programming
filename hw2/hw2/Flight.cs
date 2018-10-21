@@ -8,10 +8,9 @@ namespace hw2
 {
     class Flight
     {
-        private int id;
-        private string origin, destination, date;
+        private string id, origin, destination, date;
 
-        public Flight(int id, string origin, string destination, string date)
+        public Flight(string id, string origin, string destination, string date)
         {
             this.id = id;
             this.origin = origin;

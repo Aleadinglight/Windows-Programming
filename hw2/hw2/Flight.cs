@@ -20,6 +20,11 @@ namespace hw2
             Customers = new List<string> { };
         }
 
+        public string getId()
+        {
+            return this.id;
+        }
+
         public void addCustomer(string name)
         {
             Customers.Add(name);

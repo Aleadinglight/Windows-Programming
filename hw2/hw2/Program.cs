@@ -52,10 +52,29 @@ namespace hw2
             Console.Write("Date: ");
             string date = Console.ReadLine();
             // Add customer to the list, with the name and Id = Number of all customer +1
-            string NameExist = CustomersList.Find(x => x.getName().Equals(name));
-            CustomersList.Add(new Customer(name, CustomersList.Count + 1));
-
-
+            Customer ExistCustomer = CustomersList.Find(x => x.getName().Equals(name));
+            // .Find() might return null if there is no result
+            if (ExistCustomer.getName().Equals(name))
+            {
+                ExistCustomer.addFlight(flightId);
+            }
+            else
+            {
+                Customer newCustomer = new Customer(name, CustomersList.Count + 1);
+                newCustomer.addFlight(flightId);
+                CustomersList.Add(newCustomer);
+            }
+            Flight ExistFlight = FlightsList.Find(x => x.getId().Equals(flightId));
+            if (ExistFlight.getName().Equals(name))
+            {
+                ExistFlight.addFlight(flightId);
+            }
+            else
+            {
+                Customer newCustomer = new Customer(name, CustomersList.Count + 1);
+                newCustomer.addFlight(flightId);
+                CustomersList.Add(newCustomer);
+            }
         }
     }
 }

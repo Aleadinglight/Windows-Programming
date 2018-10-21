@@ -23,7 +23,5 @@ namespace hw2
         {
             return "Flight id: " + this.id + "\nFrom: " + origin + "\nTo: " + destination + "\nDate: " + date;
         }
-        //git commit --date="Mon Oct 1 12:00 2018 +0100" -m "added class Flight"
-
     }
 }

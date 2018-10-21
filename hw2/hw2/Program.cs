@@ -10,6 +10,8 @@ namespace hw2
     {
         static void Main(string[] args)
         {
+            var CustomersList = new List<Customer> { };
+            CustomersList.Add(new Customer("John", 1,"A"));
 
         }
     }

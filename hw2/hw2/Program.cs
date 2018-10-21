@@ -40,7 +40,22 @@ namespace hw2
             FlightsList.Add(new Flight("C", "Germany", "Sweden", "1/4/2018"));
             FlightsList.ElementAt(2).addCustomer("Jenni");
 
-            
+            Console.WriteLine("Customer information:");
+            Console.Write("Name: ");
+            string name = Console.ReadLine();
+            Console.Write("Flight ID: ");
+            string flightId = Console.ReadLine();
+            Console.Write("From: ");
+            string from = Console.ReadLine();
+            Console.Write("To: ");
+            string to = Console.ReadLine();
+            Console.Write("Date: ");
+            string date = Console.ReadLine();
+            // Add customer to the list, with the name and Id = Number of all customer +1
+            string NameExist = CustomersList.Find(x => x.getName().Equals(name));
+            CustomersList.Add(new Customer(name, CustomersList.Count + 1));
+
+
         }
     }
 }

@@ -19,6 +19,11 @@ namespace hw2
             flightIds = new List<string> { };
         }
 
+        public string getName()
+        {
+            return this.name;
+        }
+
         public void addFlight(string newFlightId)
         {
             flightIds.Add(newFlightId);

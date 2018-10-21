@@ -8,19 +8,31 @@ namespace hw2
 {
     class Customer
     {
-        private string name, flightId;
+        private string name;
+        private  List<string> flightIds;
         private int id;
 
-        public Customer(string name, int id, string flightId)
+        public Customer(string name, int id)
         {
             this.name = name;
             this.id = id;
-            this.flightId = flightId;
+            flightIds = new List<string> { };
+        }
+
+        public void addFlight(string newFlightId)
+        {
+            flightIds.Add(newFlightId);
         }
         // returns the customer's and his/her flight's info.
         public string toString()
         {
-            return "Name: " + name + "\nId: " + id + "\nFlight Id: " + flightId;
+            string information =  "Name: " + name + "\nId: " + id + "\nFlight Id: ";
+            foreach (var flight in flightIds)
+            {
+                information += flight + ",";
+            }
+            information = information.Remove(information.Length - 1);
+            return information;
         }
             
     }

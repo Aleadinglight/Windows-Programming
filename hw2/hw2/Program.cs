@@ -30,9 +30,17 @@ namespace hw2
             // string id, string origin, string destination, string date
             var FlightsList = new List<Flight> {};
             FlightsList.Add(new Flight("A", "Tokyo", "Helsinki", "1/10/2018"));
-            FlightsList.Add(new Flight("B", "USA", "Russia", "10/12/2018"));
-            FlightsList.Add(new Flight("C", "Germany", "Sweden", "1/4/2018"));
+            FlightsList.ElementAt(0).addCustomer("John");
+            FlightsList.ElementAt(0).addCustomer("Mark");
 
+            FlightsList.Add(new Flight("B", "USA", "Russia", "10/12/2018"));
+            FlightsList.ElementAt(1).addCustomer("John");
+            FlightsList.ElementAt(1).addCustomer("Tom");
+
+            FlightsList.Add(new Flight("C", "Germany", "Sweden", "1/4/2018"));
+            FlightsList.ElementAt(2).addCustomer("Jenni");
+
+            
         }
     }
 }

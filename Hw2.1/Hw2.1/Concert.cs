@@ -24,6 +24,11 @@ namespace Hw2._1
             this._price = price;
         }
 
+        public string toString()
+        {
+            return "Title: " + this._title + "\nLocation: " + this._location + "\nDate: " + this._date + "\nTime: " + this._time + "\nPrice: " + this._price;
+        }
+
         public string Location {
             get
             {

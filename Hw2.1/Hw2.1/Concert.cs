@@ -24,6 +24,32 @@ namespace Hw2._1
             this._price = price;
         }
 
+        public static Concert operator ++ (Concert a)
+        {
+            a.Price+=5;
+            return a;
+        }
+
+        public static Concert operator --(Concert a)
+        {
+            a.Price -= 5;
+            return a;
+        }
+
+        public static bool operator< (Concert b, Concert c)
+        {
+            if (b.Price < c.Price)
+                return true;
+            return false;
+        }
+
+        public static bool operator> (Concert b, Concert c)
+        {
+            if (b.Price > c.Price)
+                return true;
+            return false;
+        }
+
         public string toString()
         {
             return "Title: " + this._title + "\nLocation: " + this._location + "\nDate: " + this._date + "\nTime: " + this._time + "\nPrice: " + this._price;

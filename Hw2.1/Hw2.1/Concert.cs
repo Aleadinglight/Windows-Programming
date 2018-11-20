@@ -15,7 +15,7 @@ namespace Hw2._1
         private string _time;
         private double _price;
 
-        Concert(string title, string location, string date, string time, double price)
+        public Concert(string title, string location, string date, string time, double price)
         {
             this._title = title;
             this._location = location;

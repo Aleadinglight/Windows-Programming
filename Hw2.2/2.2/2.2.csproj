@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{95C1B464-294F-45FB-9F18-18853B82E712}</ProjectGuid>
+    <ProjectGuid>{B6417243-A422-4347-BA0A-E35C24503953}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Hw2._1</RootNamespace>
-    <AssemblyName>Hw2.1</AssemblyName>
+    <RootNamespace>_2._2</RootNamespace>
+    <AssemblyName>2.2</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,9 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concert.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextAnalyzer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

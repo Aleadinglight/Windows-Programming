@@ -11,9 +11,11 @@ namespace _2._2
         static void Main(string[] args)
         {
             TextAnalyzer a = new TextAnalyzer("Hello");
-            string b = "asd";
-            b = a.initialize(b);
-            Console.WriteLine(b);
+            string unit_string = "asd";
+            string count_result = a.initialize(out unit_string);
+
+            Console.WriteLine(unit_string);
+            Console.WriteLine(count_result);
         }
     }
 }

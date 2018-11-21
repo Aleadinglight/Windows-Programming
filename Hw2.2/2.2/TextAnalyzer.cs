@@ -10,11 +10,12 @@ namespace _2._2
     {
         private string text;
      
-        public TextAnalyzer(string text) {
+        public TextAnalyzer(out string text) {
+            initialize(out text);
             this.text = text;
         }
 
-        public string initialize(out string uninit_text) {
+        public void initialize(out string uninit_text) {
             uninit_text = "";
             // create builder so we can append the characters
             // builder will contain the return value and the information
@@ -31,15 +32,25 @@ namespace _2._2
             char[] characters = builder.ToString().ToArray();
             Array.Sort(characters);
             uninit_text = new string(characters);
-
-            // Reuse builder for storing the result of counting letters
-            builder.Clear();
-            for (int i = 0; i < chars.Length; i++) {
-                int count = uninit_text.Count(x => x==chars[i]);
-                builder.Append("\nCharacter " +chars[i]+" appears "+count+" times");
-            }
-            
-            return builder.ToString();
         }
+
+        public string getText() {
+            return this.text;
+        }
+
+        public SortedList<char, int> GetCharList() {
+
+           SortedList<char, int> charList= new SortedList<char, int>();
+
+           foreach (char c in this.text) {
+                if (charList.ContainsKey(c))
+                    charList[c]++;
+                else
+                    charList[c] = 1;
+           }
+
+            return charList;
+        }
+
     }
 }

@@ -39,6 +39,7 @@ namespace hw1
             Matrix sum = a.add(b);
             Matrix diff = a.minus(b);
             Matrix product= a.mul(b);
+
             // Output the results
             Console.Write("A+B\n");
             writeMatrix(sum);

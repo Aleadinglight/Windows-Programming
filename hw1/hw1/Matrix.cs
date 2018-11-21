@@ -11,6 +11,7 @@ namespace hw1
         private int width,height;
         private int[,] array;
         public static Random randNum = new Random();
+
         public int getWidth
         {
             get { return width; }
@@ -59,6 +60,11 @@ namespace hw1
 
         public Matrix mul(Matrix b)
         {
+            // Check if matrix b has the same colums
+            if (b.width != this.width) {
+                Console.WriteLine();
+            }
+            
             // Create another matrix with the same size as a & b
             Matrix c = new Matrix(this.width, this.height);
             for (int i = 0; i < c.width; i++)

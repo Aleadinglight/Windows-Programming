@@ -8,27 +8,27 @@ namespace hw1
 {
     class Matrix
     {
-        private int width,height;
+        private int row, col;
         private int[,] array;
         public static Random randNum = new Random();
 
         public int getWidth
         {
-            get { return width; }
+            get { return row; }
         }
 
         public int getHeight
         {
-            get { return height; }
+            get { return col; }
         }
 
         public Matrix(int width, int height)
         {
-            this.width = width;
-            this.height = height;
-            this.array = new int[this.width, this.height];
-            for (int i = 0; i < this.width; i++)
-                for (int j = 0; j < this.height; j++)
+            this.row = width;
+            this.col = height;
+            this.array = new int[this.row, this.col];
+            for (int i = 0; i < this.row; i++)
+                for (int j = 0; j < this.col; j++)
                     this.array[i, j] = randNum.Next(1, 10);
         }
 
@@ -40,9 +40,9 @@ namespace hw1
         public Matrix add( Matrix b)
         {
             // Create another matrix with the same size as a & b
-            Matrix c = new Matrix(this.width, this.height);
-            for (int i = 0; i < c.width; i++)
-                for (int j = 0; j < c.height; j++)
+            Matrix c = new Matrix(this.row, this.col);
+            for (int i = 0; i < c.row; i++)
+                for (int j = 0; j < c.col; j++)
                     c.value()[i, j] = this.value()[i, j] + b.value()[i, j];
             return c;
         }
@@ -50,9 +50,9 @@ namespace hw1
         public Matrix minus(Matrix b)
         {
             // Create another matrix with the same size as a & b
-            Matrix c = new Matrix(this.width, this.height);
-            for (int i = 0; i < c.width; i++)
-                for (int j = 0; j < c.height; j++)
+            Matrix c = new Matrix(this.row, this.col);
+            for (int i = 0; i < c.row; i++)
+                for (int j = 0; j < c.col; j++)
                     c.value()[i, j] = this.value()[i, j] - b.value()[i, j];
                    
             return c;
@@ -60,16 +60,22 @@ namespace hw1
 
         public Matrix mul(Matrix b)
         {
-            // Check if matrix b has the same colums
-            if (b.width != this.width) {
-                Console.WriteLine();
-            }
+        
             
             // Create another matrix with the same size as a & b
-            Matrix c = new Matrix(this.width, this.height);
-            for (int i = 0; i < c.width; i++)
-                for (int j = 0; j < c.height; j++)
-                    c.value()[i, j] = this.value()[i, j] * b.value()[i, j];
+            Matrix c = new Matrix(this.row, b.col);
+            for (int i = 0; i < this.row; i++)
+            {
+                for (int j = 0; j < b.col; j++)
+                {
+                    c.value()[i, j] = 0;
+                    for (int k = 0; k < this.col; k++)
+                    {
+                        c.value()[i, j] += this.array[i,k] * b.value()[k, j];
+                    }
+
+                }
+            }
             return c;
         }
 

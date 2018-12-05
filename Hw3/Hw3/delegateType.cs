@@ -12,15 +12,15 @@ namespace Hw3
         {
             return f.ToString();
         }
-        public static string getIdOnly(Flight f)
+        public static string getFlightId(Flight f)
         {
             return (f.FlightID+"\n");
         }
-        public static string getOriginOnly(Flight f)
+        public static string getFlightOrigin(Flight f)
         {
             return (f.Origin+"\n");
         }
-        public static string getDestinationOnly(Flight f)
+        public static string getFlightDestination(Flight f)
         {
             return (f.Destination+"\n");
         }

@@ -13,9 +13,9 @@ namespace Hw3
         static void Main(string[] args)
         {
             airlineCompany a = new airlineCompany("Finbuck");
-            a.addNewFlight("FI12", "VAA", "HEL", "10/08/2019", 200.99);
-            a.addNewFlight("FI13", "HEL", "SGN", "07/11/2019", 600.20);
-            a.addNewFlight("FI14", "HEL", "VAA", "08/11/2019", 300.10);
+            a.addNewFlight("VIVA", "SGN", "VAASA", "10/08/2019", 200.99);
+            a.addNewFlight("GAY", "LA", "SGN", "07/11/2019", 600.20);
+            a.addNewFlight("SAD", "", "VAA", "08/11/2019", 300.10);
 
             for(int i=0;i<a.flightCount();i++)
                 Console.WriteLine(a[i]);
@@ -34,15 +34,15 @@ namespace Hw3
             Console.WriteLine(a.processCheapFlight(pfd, inPrice));*/
 
             Console.WriteLine("Flight ID of flight less than {0:0.00} ", inPrice);
-            pfd = new processFlight(delegateType.getIdOnly);
+            pfd = new processFlight(delegateType.getFlightId);
             Console.WriteLine(a.applyDelegate(pfd, inPrice));
 
             Console.WriteLine("Destination of flight less than {0:0.00} ", inPrice);
-            pfd = new processFlight(delegateType.getDestinationOnly);
+            pfd = new processFlight(delegateType.getFlightDestination);
             Console.WriteLine(a.applyDelegate(pfd, inPrice));
 
             Console.WriteLine("Origin of flight less than {0:0.00} ", inPrice);
-            pfd = new processFlight(delegateType.getDestinationOnly);
+            pfd = new processFlight(delegateType.getFlightDestination);
             Console.WriteLine(a.applyDelegate(pfd, inPrice));
         }
     }

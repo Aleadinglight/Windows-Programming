@@ -77,10 +77,13 @@ namespace Hw3
                 + "\nPrice: " + this.price +"\n";
           
         }
-        public String findFlight(String fligtID)
+
+        public string findFlight(string flightID)
         {
             if (this.flightID.Equals(flightID))
+            {
                 return this.ToString();
+            }
             return "";
         } 
     }

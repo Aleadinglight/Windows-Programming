@@ -41,14 +41,14 @@ namespace Hw3
             return this.flightList.Count();
         }
 
-        public Flight findFlight(string flightID)
+        public string findFlight(string flightID)
         {
+            string ret = "";
             for (int i = 0; i < this.flightList.Count(); i++)
             {
-                if (this.flightList.ElementAt(i).Equals(flightID))
-                    return this.flightList.ElementAt(i);
+                ret += this.flightList.ElementAt(i).findFlight(flightID);
             }
-            return null;
+            return ret;
         }
 
         public string applyDelegate(processFlight processDelegate, double price)

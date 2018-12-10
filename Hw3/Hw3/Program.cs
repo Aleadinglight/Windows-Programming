@@ -20,6 +20,11 @@ namespace Hw3
             for (int i=0;i< finAir.flightCount();i++)
                 Console.WriteLine(finAir[i]);
 
+            // Find flight
+            Console.Write("Find flight: ");
+            string flightId = Console.ReadLine();
+            Console.WriteLine("\n"+finAir.findFlight(flightId));
+
             // Enter the price
             Console.WriteLine("Enter price:");
             string temp = Console.ReadLine();

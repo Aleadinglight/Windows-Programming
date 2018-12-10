@@ -36,11 +36,6 @@ namespace Hw3
             }
         }
 
-        public void addNewFlight(string inFlightID, string inOrigin, string inDestination, string inDate, double inPrice)
-        {
-            this.flightList.Add(new Flight(inFlightID, inOrigin, inDestination, inDate, inPrice));
-        }
-
         public int flightCount()
         {
             return this.flightList.Count();

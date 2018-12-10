@@ -12,38 +12,30 @@ namespace Hw3
     {   
         static void Main(string[] args)
         {
-            airlineCompany a = new airlineCompany("Finbuck");
-            a.addNewFlight("VIVA", "SGN", "VAASA", "10/08/2019", 200.99);
-            a.addNewFlight("GAY", "LA", "SGN", "07/11/2019", 600.20);
-            a.addNewFlight("SAD", "", "VAA", "08/11/2019", 300.10);
-            //new Flight(inFlightID, inOrigin, inDestination, inDate, inPrice)
-            for (int i=0;i<a.flightCount();i++)
-                Console.WriteLine(a[i]);
+            airlineCompany finAir = new airlineCompany("FinAir");
+            finAir[0] = new Flight("TKO", "SGN", "VAA", "10/08/2019", 200.99);
+            finAir[1] = new Flight("CTO", "LA", "SGN", "07/11/2019", 600.20);
+            finAir[2] = new Flight("SAD","VAA", "HEL", "08/11/2019", 300.10);
+          
+            for (int i=0;i< finAir.flightCount();i++)
+                Console.WriteLine(finAir[i]);
 
-            Console.WriteLine("Enter price: \n");
-            double inPrice;
-            while (!double.TryParse(Console.ReadLine(), out inPrice))
-            {
-                Console.WriteLine("Incorrect format");
-            }
+            // Enter the price
+            Console.WriteLine("Enter price:");
+            string temp = Console.ReadLine();
+            double price = Double.Parse(temp);
 
+            // Process
             processFlight pfd;
 
-            /*Console.WriteLine("Full flight info of flight less than {0:0.00} ", inPrice);
-            pfd = new processFlight(delegateCollection.getFullFlightInfo);
-            Console.WriteLine(a.processCheapFlight(pfd, inPrice));*/
-
-            Console.WriteLine("Flight ID of flight less than {0:0.00} ", inPrice);
+            Console.WriteLine("\nFlight ID of flight more than {0:0.00} ", price);
             pfd = new processFlight(delegateType.getFlightId);
-            Console.WriteLine(a.applyDelegate(pfd, inPrice));
+            Console.WriteLine(finAir.applyDelegate(pfd, price));
 
-            Console.WriteLine("Destination of flight less than {0:0.00} ", inPrice);
+            Console.WriteLine("Destination of flight more than {0:0.00} ", price);
             pfd = new processFlight(delegateType.getFlightDestination);
-            Console.WriteLine(a.applyDelegate(pfd, inPrice));
+            Console.WriteLine(finAir.applyDelegate(pfd, price));
 
-            Console.WriteLine("Origin of flight less than {0:0.00} ", inPrice);
-            pfd = new processFlight(delegateType.getFlightDestination);
-            Console.WriteLine(a.applyDelegate(pfd, inPrice));
         }
     }
 }

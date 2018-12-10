@@ -10,19 +10,19 @@ namespace Hw3
     {
         public static string getFlightInfo(Flight f)
         {
-            return f.ToString();
+            return f.ToString()+"\n";
         }
         public static string getFlightId(Flight f)
         {
-            return (f.FlightID+"\n");
+            return f.FlightID+"\n";
         }
         public static string getFlightOrigin(Flight f)
         {
-            return (f.Origin+"\n");
+            return f.Origin+"\n";
         }
         public static string getFlightDestination(Flight f)
         {
-            return (f.Destination+"\n");
+            return f.Destination+"\n";
         }
     }
 }

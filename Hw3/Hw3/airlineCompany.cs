@@ -30,6 +30,10 @@ namespace Hw3
             {
                 return this.flightList.ElementAt(index);
             }
+            set
+            {
+                this.flightList.Insert(index, value);
+            }
         }
 
         public void addNewFlight(string inFlightID, string inOrigin, string inDestination, string inDate, double inPrice)

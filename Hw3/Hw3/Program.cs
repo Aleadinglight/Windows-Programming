@@ -16,8 +16,8 @@ namespace Hw3
             a.addNewFlight("VIVA", "SGN", "VAASA", "10/08/2019", 200.99);
             a.addNewFlight("GAY", "LA", "SGN", "07/11/2019", 600.20);
             a.addNewFlight("SAD", "", "VAA", "08/11/2019", 300.10);
-
-            for(int i=0;i<a.flightCount();i++)
+            //new Flight(inFlightID, inOrigin, inDestination, inDate, inPrice)
+            for (int i=0;i<a.flightCount();i++)
                 Console.WriteLine(a[i]);
 
             Console.WriteLine("Enter price: \n");

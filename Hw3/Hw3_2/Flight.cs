@@ -51,14 +51,15 @@ namespace Hw3
             this.origin = origin;
             this.destination = destination;
             this.date = new DateTime();
+            this.date = DateTime.Now;
         }
 
         public override string ToString()
         {
             return "Flight ID: " + this.flightID
-                + "\nFlight origin: " + this.origin
-                + "\nFlight destination: " + this.destination
-                + "\nDate : " + this.date + "\n";
+                + ", Origin: " + this.origin
+                + ", Destination: " + this.destination
+                + ", Date : " + this.date.ToString();
 
         }
 

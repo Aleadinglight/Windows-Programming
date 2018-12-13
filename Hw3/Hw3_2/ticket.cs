@@ -33,10 +33,10 @@ namespace Hw3
         
         public override string ToString()
         {
-            return "Ticket ID: " + this.ticketId 
-                + "\nPassenger ID: " + this.passengerId 
+            return "Ticket Id: " + this.ticketId 
+                + "\nPassenger Id: " + this.passengerId 
                 + "\nFlight info: "+ this.flight.ToString()
-                + "Ticket price : " + this.price 
+                + "\nTicket price : " + this.price 
                 + "\nExtraTax : " + this.extraTax 
                 + "\nTotal price : " + this.getPrice(this.ticketId) + "\n";
         }
@@ -48,7 +48,7 @@ namespace Hw3
 
         public string getFlightInfo(List<passenger> passengerList)
         {
-            string res = "This ticket info: \n";
+            string res = "Ticket "+this.ticketId+ " info: \n";
             res += this.ToString();
             foreach (passenger p in passengerList)
             {

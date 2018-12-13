@@ -36,17 +36,20 @@ namespace Hw3
         {
             this.ticketList.Add(t);
         }
+
         public override string ToString()
         {
             string res = "";
+            int iterate=0;
             res += "Passenger ID : " + passengerId + "\n";
             res += "First name: " + firstName + "\n";
-            res += "Last name: " + lastName + "\n";
-            res += "Tickets :\n";
+            res += "Last name: " + lastName + "\n\n";
+            res += "Tickets :\n\n";
             foreach (Ticket t in ticketList)
             {
-                res += "*********new ticket**********\n";
-                res += t.ToString();
+                iterate++;
+                res += iterate+". ";
+                res += t.ToString()+"\n";
             }
             return res;
         }
@@ -56,22 +59,22 @@ namespace Hw3
             if (this.passengerId.Equals(passengerId))
                 return this.ToString();
             else
-                return null;
+                return "";
         }
     }
 
-    class economicPassenger : passenger
+    class EconomicPassenger : passenger
     {
         protected double luggageWeight;
         
-        public economicPassenger(string passengerId, string firstName, string lastName, string phoneNumber, double luggageWeight) : base(passengerId, firstName, lastName, phoneNumber)
+        public EconomicPassenger(string passengerId, string firstName, string lastName, string phoneNumber, double luggageWeight) : base(passengerId, firstName, lastName, phoneNumber)
         {
             this.luggageWeight = luggageWeight;
         }
 
         public override string ToString()
         {
-            return base.ToString()+ "\n* Luggage value : " + this.luggageWeight + "\n";
+            return base.ToString()+ "All tickets include:\n*Luggage value : " + this.luggageWeight;
          
         }
 
@@ -79,12 +82,11 @@ namespace Hw3
         {
             if (this.passengerId.Equals(Id))
                 return this.ToString();
-            else
-                return null;
+            return "";
         }
     }
 
-    class firstClassPassenger : economicPassenger
+    class firstClassPassenger : EconomicPassenger
     {
         string mealMenu;
         double bonus = 0;
@@ -100,23 +102,25 @@ namespace Hw3
         {
             this.mealMenu = mealMenu;
         }
+
         public override void addTicket(Ticket ticket)
         {
             base.addTicket(ticket);
             bonus += ticket.getPrice(ticket.TicketId) * 0.02;
         }
+
         public override string getInfo(string Id)
         {
-            string res = base.getInfo(Id);
-            res += " Bonus : " + this.bonus + "\n";
-            return res;
+            if (this.passengerId.Equals(Id))
+                return this.ToString();
+            return "";
+
         }
         public override string ToString()
         {
-            string res = base.ToString();
-            res += "Meal : "+this.mealMenu+"\n";
-            res += "Total bonus: " + this.bonus + "\n";
-            return res;
+            return base.ToString()
+                + "\n*Meal menu: " + this.mealMenu
+                + "\n*Total bonus: " + this.bonus + "\n";
         }
     }
 }

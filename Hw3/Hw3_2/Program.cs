@@ -7,52 +7,42 @@ namespace Hw3
     {
         static void Main(string[] args)
         {
-            Flight f = new Flight("FI12", "Vaasa", "Helsinki"); //our flight
+            Flight f = new Flight("FI12", "Vaasa", "Helsinki"); 
 
-            //Some newly constructed ticket
-            Ticket ticket1 = new Ticket("TIC1", "P01", f, 500.00);
-            Ticket ticket2 = new Ticket("TIC2", "P01", f, 600.00);
-            Ticket ticket3 = new Ticket("TIC3", "P02", f, 550.00);
-            Ticket ticket4 = new Ticket("TIC4", "P02", f, 590.00);
-            economicPassenger ePass = new economicPassenger("P01", "Huy", "Nguyen", "0123123", 21);
-            firstClassPassenger fcPass = new firstClassPassenger("P02", "Huy", "Nguyen", "123333", 21, "Vegetable only");
+            // Initiate tickets
+            Ticket ticket1 = new Ticket("TIC1", "P01", f, 100.10);
+            Ticket ticket2 = new Ticket("TIC2", "P02", f, 200.20);
+            Ticket ticket3 = new Ticket("TIC3", "P03", f, 300.30);
+            EconomicPassenger ecoPassenger = new EconomicPassenger("eco01", "Donald", "Trump", "0123", 10);
+            firstClassPassenger fcPassenger = new firstClassPassenger("fc01", "John", "Wick", "4567", 20, "Noodles");
 
-            ePass.addTicket(ticket1);
-            ePass.addTicket(ticket2);
+            // Add tickets to first class passenger
+            ecoPassenger.addTicket(ticket1);
+            
+            // Add tickets to first class passenger
+            fcPassenger.addTicket(ticket2);
+            fcPassenger.addTicket(ticket3);
 
-            fcPass.addTicket(ticket3);
-            fcPass.addTicket(ticket4);
-            List<passenger> pLists = new List<passenger>();
-            pLists.Add(ePass);
-            pLists.Add(fcPass);
+            List<passenger> passengersList = new List<passenger>();
+            passengersList.Add(ecoPassenger);
+            passengersList.Add(fcPassenger);
 
-            /*foreach(passenger p in pLists) {
-                Console.WriteLine("---------------------------------------------------------------");
-                Console.WriteLine(p);
-            }*/
-            Console.Write(ticket1.getFlightInfo(pLists)) ;
-            string test = "";
-            bool found = false;
-            while (!test.Equals("quit"))
+            Console.WriteLine(ticket1.getFlightInfo(passengersList)) ;
+
+            Console.WriteLine("Search for passenger ID: ");
+            string passengerSearchInput = Console.ReadLine();
+
+            string ans = "";
+            foreach (passenger p in passengersList)
             {
-                Console.WriteLine("Give a passenger ID: ");
-                test = Console.ReadLine();
-                Console.WriteLine("Search for ID: " + test);
-                foreach(passenger p in pLists)
-                {
-                    if (p.PassengerId.Equals(test))
-                    {
-                        Console.WriteLine("Customer with this ID: ");
-                        Console.WriteLine(p);
-                        found = true;
-                        break;
-                    }
-                }
-                if(found == false)
-                {
-                    Console.WriteLine("ID not found");
-                }
+                ans += p.getInfo(passengerSearchInput);
             }
+            Console.WriteLine("Result:\n"+ans+"\n");
+            if (ans.Equals(""))
+            {
+                Console.WriteLine("ID not found\n");
+            }
+         
         }   
     }
 }

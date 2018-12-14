@@ -77,6 +77,26 @@ namespace Hw4
             this.customerList = customerList;
         }
 
+        public void addRoom(Room room)
+        {
+            this.roomList.Add(room);
+        }
+
+        public void removeRoom(Room room)
+        {
+            this.roomList.Remove(room);
+        }
+
+        public void addCustomer(Customer customer)
+        {
+            this.customerList.Add(customer);
+        }
+
+        public void removeCustomer(Customer customer)
+        {
+            this.customerList.Remove(customer);
+        }
+
         public void Write(string filePath)
         {
             var w = new BinaryWriter(new FileStream(filePath, FileMode.OpenOrCreate));
@@ -115,6 +135,8 @@ namespace Hw4
                 Console.WriteLine(e.Message + "\n");
             }
         }
+
+
         public void ReadBinary(BinaryReader r)
         {
             try

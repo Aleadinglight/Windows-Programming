@@ -8,8 +8,42 @@ using System.Xml.Serialization;
 
 namespace Hw4
 {
+    interface IHotel : ReadWriteInterface
+    {
+        string Name
+        {
+            get;
+            set;
+        }
+        string ConstructDate
+        {
+            get;
+            set;
+        }
+        string Address
+        {
+            get;
+            set;
+        }
+        int Stars
+        {
+            get;
+            set;
+        }
+        List<Room> RoomList
+        {
+            get;
+            set;
+        }
+        List<Customer> CustomerList
+        {
+            get;
+            set;
+        }
+    }
+
     [XmlRoot("Hotel"), Serializable]
-    class Hotel : ReadWriteInterface
+    public class Hotel : IHotel
     {
         private string name, constructionDate, address;
         private int stars;
@@ -62,6 +96,30 @@ namespace Hw4
             set
             {
                 this.stars = value;
+            }
+        }
+        [XmlArray("CustomerList"), XmlArrayItem("Customer")]
+        public List<Customer> CustomerList
+        {
+            get
+            {
+                return this.customerList;
+            }
+            set
+            {
+                this.customerList = value;
+            }
+        }
+        [XmlArray("RoomList"), XmlArrayItem("Room")]
+        public List<Room> RoomList
+        {
+            get
+            {
+                return this.roomList;
+            }
+            set
+            {
+                this.roomList = value;
             }
         }
 
@@ -118,45 +176,33 @@ namespace Hw4
         public void Write(string filePath)
         {
             var w = new BinaryWriter(new FileStream(filePath, FileMode.OpenOrCreate));
-            WriteBinary(w);
-            w.Close();
-        }
-
-        public void Read(string filePath)
-        {
-            var r = new BinaryReader(new FileStream(filePath, FileMode.Open));
-            ReadBinary(r);
-            r.Close();
-        }
-
-        public void WriteBinary(BinaryWriter r)
-        {
             try
             {
-                r.Write(name);
-                r.Write(constructionDate);
-                r.Write(address);
-                r.Write(stars);
-                r.Write(roomList.Count);
+                w.Write(name);
+                w.Write(constructionDate);
+                w.Write(address);
+                w.Write(stars);
+                w.Write(roomList.Count);
                 foreach (var room in roomList)
                 {
-                    room.WriteBinary(r);
+                    room.WriteBinary(w);
                 }
-                r.Write(this.customerList.Count);
+                w.Write(this.customerList.Count);
                 foreach (var customer in customerList)
                 {
-                    customer.WriteBinary(r);
+                    customer.WriteBinary(w);
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message + "\n");
             }
+            w.Close();
         }
 
-
-        public void ReadBinary(BinaryReader r)
+        public void Read(string filePath)
         {
+            var r = new BinaryReader(new FileStream(filePath, FileMode.Open));
             try
             {
                 name = r.ReadString();
@@ -182,6 +228,32 @@ namespace Hw4
             {
                 Console.WriteLine(e.Message + "\n");
             }
+            r.Close();
+        }
+
+        public override string ToString()
+        {
+            string res = "";
+            res += "Hotel Name: " + this.name + "\n";
+            res += "Construction date: " + this.constructionDate + "\n";
+            res += "Address: " + this.address + "\n";
+            res += "Stars: " + this.stars + "\n";
+
+            res += "---------\n";
+            res += "Rooms list:\n";
+            foreach (var room in roomList)
+            {
+                res += "---\n";
+                res += room.ToString() + "\n";
+            }
+            res += "---------\n";
+            res += "Customers list:\n";
+            foreach (var customer in customerList)
+            {
+                res += "---\n";
+                res += customer.ToString() + "\n";
+            }
+            return res;
         }
     }
 }

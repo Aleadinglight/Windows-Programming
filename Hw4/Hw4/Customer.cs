@@ -8,8 +8,38 @@ using System.Xml.Serialization;
 
 namespace Hw4
 {
+    interface ICustomer : ReadWriteInterface
+    {
+        string Name
+        {
+            get;
+            set;        
+        }
+        string Address
+        {
+            get;
+            set;
+        }
+        string RoomNumber
+        {
+            get;
+            set;
+        }
+        string ArrivalDate
+        {
+            get;
+            set;
+        }
+        int StayDuration
+        {
+            get;
+            set;
+        }
+
+    }
+
     [XmlType("Customer"), Serializable]
-    class Customer : ReadWriteInterface
+    public class Customer : ReadWriteInterface
     {
         private string name, address, arrivalDate, roomNumber;
         int stayDuration;
@@ -40,7 +70,7 @@ namespace Hw4
         }
 
         [XmlElement("Room")]
-        public string RoomId
+        public string RoomNumber
         {
             get
             {
@@ -118,6 +148,17 @@ namespace Hw4
             {
                 Console.WriteLine(e.Message + "\n");
             }
+        }
+
+        public override string ToString()
+        {
+            string res = "";
+            res += "Customer name: " + this.name + "\n";
+            res += "Address: " + this.address + "\n";
+            res += "Room: " + this.roomNumber + "\n";
+            res += "Arrival date: " + this.arrivalDate + "\n";
+            res += "Length of stay: " + this.stayDuration + "\n";
+            return res;
         }
     }
 }

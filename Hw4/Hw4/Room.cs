@@ -8,8 +8,37 @@ using System.Xml.Serialization;
 
 namespace Hw4
 {
+    interface IRoom : ReadWriteInterface
+    {
+        string RoomNumber
+        {
+            get;
+            set;
+        }
+        int Area
+        {
+            get;
+            set;
+        }
+        string Type
+        {
+            get;
+            set;
+        }
+        string Description
+        {
+            get;
+            set;
+        }
+        double Price
+        {
+            get;
+            set;
+        }
+    }
+
     [XmlType("Room"), Serializable]
-    class Room : ReadWriteInterface
+    public class Room : IRoom
     {
         private int area;
         private string roomNumber, type, description;
@@ -117,6 +146,17 @@ namespace Hw4
             {
                 Console.WriteLine(e.Message + "\n");
             }
+        }
+
+        public override string ToString()
+        {
+            string res = "";
+            res += "Room number: " + this.roomNumber + "\n";
+            res += "Area: " + this.area + "\n";
+            res += "Type: " + this.type + "\n";
+            res += "Price: " + this.price + "\n";
+            res += "Description: " + this.description + "\n";
+            return res;
         }
     }
 }

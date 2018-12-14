@@ -29,7 +29,7 @@ namespace Hw4
             myHotel.addRoom(room3);
 
             // Using binary reader / writer
-            Console.WriteLine("Binary reader/ writer");
+            Console.WriteLine("Saved as binary reader/ writer");
             myHotel.Write("./hotel.bin1");
             var h0 = new Hotel();
             h0.Read("./hotel.bin1");

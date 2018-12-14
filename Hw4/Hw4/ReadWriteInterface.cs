@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Hw4
 {
-    interface ReadWriteInterface
+    public interface ReadWriteInterface
     {
         void WriteBinary(BinaryWriter w);
         void ReadBinary(BinaryReader r);

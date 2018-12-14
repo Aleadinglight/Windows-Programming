@@ -4,16 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Xml.Serialization;
 
 namespace Hw4
 {
+    [XmlType("Room"), Serializable]
     class Room : ReadWriteInterface
     {
         private int area;
         private string roomNumber, type, description;
         private double price;
 
-        public int RoomNumber
+        [XmlElement("RoomNumber")]
+        public string RoomNumber
         {
             get
             {
@@ -24,6 +27,7 @@ namespace Hw4
                 this.roomNumber = value;
             }
         }
+        [XmlElement("Area")]
         public int Area
         {
             get
@@ -35,6 +39,7 @@ namespace Hw4
                 this.area = value;
             }
         }
+        [XmlElement("Type")]
         public string Type
         {
             get
@@ -46,6 +51,7 @@ namespace Hw4
                 this.type = value;
             }
         }
+        [XmlElement("Description")]
         public string Description
         {
             get
@@ -57,6 +63,7 @@ namespace Hw4
                 this.description = value;
             }
         }
+        [XmlElement("Price")]
         public double Price
         {
             get
@@ -68,6 +75,8 @@ namespace Hw4
                 this.price = value;
             }
         }
+
+        public Room(){ }
 
         public Room(string roomNumber, int area, string type, double price, string description)
         {

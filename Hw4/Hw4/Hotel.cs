@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Xml.Serialization;
 
 namespace Hw4
 {
+    [XmlRoot("Hotel"), Serializable]
     class Hotel : ReadWriteInterface
     {
         private string name, constructionDate, address;
@@ -14,6 +16,7 @@ namespace Hw4
         private List<Room> roomList;
         private List<Customer> customerList;
 
+        [XmlElement("Name")]
         public string Name
         {
             get
@@ -25,6 +28,7 @@ namespace Hw4
                 this.name = value;
             }
         }
+        [XmlElement("ConstructDate")]
         public string ConstructDate
         {
             get
@@ -36,6 +40,7 @@ namespace Hw4
                 this.constructionDate = value;
             }
         }
+        [XmlElement("Address")]
         public string Address
         {
             get
@@ -47,6 +52,7 @@ namespace Hw4
                 this.address = value;
             }
         }
+        [XmlElement("Stars")]
         public int Stars
         {
             get
@@ -59,12 +65,24 @@ namespace Hw4
             }
         }
 
+        public Hotel()
+        {
+            this.name = "";
+            this.constructionDate = "";
+            this.address = "";
+            this.stars = 0;
+            this.roomList = new List<Room>();
+            this.customerList = new List<Customer>();
+        }
+
         public Hotel(string name, string constructDate, string address, int stars)
         {
             this.name = name;
             this.constructionDate = constructDate;
             this.address = address;
             this.stars = stars;
+            this.roomList = new List<Room>();
+            this.customerList = new List<Customer>();
         }
 
         public Hotel(string name, string constructDate, string address, int stars, List<Room> roomList, List<Customer> customerList)
@@ -124,8 +142,8 @@ namespace Hw4
                 {
                     room.WriteBinary(r);
                 }
-                r.Write(customers.Count);
-                foreach (var customer in customers)
+                r.Write(this.customerList.Count);
+                foreach (var customer in customerList)
                 {
                     customer.WriteBinary(r);
                 }
@@ -150,14 +168,14 @@ namespace Hw4
                 {
                     var room = new Room();
                     room.ReadBinary(r);
-                    AddRoom(room);
+                    addRoom(room);
                 }
                 int customersCount = r.ReadInt32();
                 for (var i = 0; i < customersCount; i++)
                 {
                     var customer = new Customer();
                     customer.ReadBinary(r);
-                    AddCustomer(customer);
+                    addCustomer(customer);
                 }
             }
             catch (Exception e)

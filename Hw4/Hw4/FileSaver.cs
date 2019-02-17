@@ -41,6 +41,7 @@ namespace Hw4
             f.Close();
             return obj;
         }
+
         public static void WriteXML(T obj, string filePath)
         {
             var f = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None);
@@ -49,6 +50,7 @@ namespace Hw4
             f.Flush();
             f.Close();
         }
+
         // JSON serialization
         public static T ReadJSON(string filePath)
         {
@@ -56,6 +58,7 @@ namespace Hw4
             T obj = JsonConvert.DeserializeObject<T>(contents);
             return obj;
         }
+
         public static void WriteJSON(T obj, string filePath)
         {
             var f = new JsonTextWriter(new StreamWriter(filePath));

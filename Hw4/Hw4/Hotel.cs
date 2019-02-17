@@ -176,6 +176,12 @@ namespace Hw4
         public void Write(string filePath)
         {
             var w = new BinaryWriter(new FileStream(filePath, FileMode.OpenOrCreate));
+            WriteBinary(w);
+            w.Close();
+        }
+
+        public void WriteBinary(BinaryWriter w)
+        {
             try
             {
                 w.Write(name);
@@ -197,12 +203,17 @@ namespace Hw4
             {
                 Console.WriteLine(e.Message + "\n");
             }
-            w.Close();
         }
 
         public void Read(string filePath)
         {
             var r = new BinaryReader(new FileStream(filePath, FileMode.Open));
+            ReadBinary(r);
+            r.Close();
+        }
+
+        public void ReadBinary(BinaryReader r)
+        {
             try
             {
                 name = r.ReadString();
@@ -228,7 +239,6 @@ namespace Hw4
             {
                 Console.WriteLine(e.Message + "\n");
             }
-            r.Close();
         }
 
         public override string ToString()
@@ -237,23 +247,34 @@ namespace Hw4
             res += "Hotel Name: " + this.name + "\n";
             res += "Construction date: " + this.constructionDate + "\n";
             res += "Address: " + this.address + "\n";
-            res += "Stars: " + this.stars + "\n";
-
-            res += "---------\n";
+            res += "Stars: " + this.stars + "\n\n";
+            res += "-----------\n";
             res += "Rooms list:\n";
+            res += "-----------\n\n";
             foreach (var room in roomList)
             {
-                res += "---\n";
                 res += room.ToString() + "\n";
+                res += "\n";
             }
-            res += "---------\n";
+            res += "\n---------------\n";
             res += "Customers list:\n";
+            res += "---------------\n\n";
             foreach (var customer in customerList)
             {
-                res += "---\n";
                 res += customer.ToString() + "\n";
+                res += "\n";
             }
             return res;
         }
     }
 }
+/*
+Write a Windows program in C# for handling information of an imaginary real-estate agent. The program should provide relevant Windows forms for adding and searching customer and sight information. All information should be saved to a database on MySQL.cc.puv.fi. For this purpose define relevant classes for real-estate, sight and customer. The relevant attributes for real-estate class are name, address, phone numbers and lists of customers and sights. The relevant attributes for sight class are id, address, area, construction date and price. The relevant attributes for customer class are id, name, and the list of sight ids. Define necessary constructors, methods and properties for classes.
+
+In the program define objects of the classes and make sure that the application works properly according to the requirements.
+
+
+Write a console program in C# for handling information of an imaginary real-estate agent. The program should allow adding and searching sight and customer information. For this purpose define relevant classes for real-estate, sight and customer. The relevant attributes for real-estate class are name, address, phone numbers and lists of customers and sights. The relevant attributes for sight class are id, address, area, construction date and price. The relevant attributes for customer class are id, name, and the list of sight ids. Define necessary constructors, methods and properties for classes.
+
+In the program define objects of the classes and make sure that the application works properly according to the requirements.
+*/

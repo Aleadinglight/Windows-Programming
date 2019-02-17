@@ -35,7 +35,6 @@ namespace Hw4
             get;
             set;
         }
-
     }
 
     [XmlType("Customer"), Serializable]

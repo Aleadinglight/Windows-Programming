@@ -27,34 +27,35 @@ namespace Hw4
             myHotel.addRoom(room1);
             myHotel.addRoom(room2);
             myHotel.addRoom(room3);
+            myHotel.addRoom(room4);
 
             // Using binary reader / writer
-            Console.WriteLine("Saved as binary reader/ writer");
-            myHotel.Write("./hotel.bin1");
-            var h0 = new Hotel();
-            h0.Read("./hotel.bin1");
-            Console.WriteLine(h0);
+            Console.WriteLine("---------------\nSaved as binary\n---------------");
+            myHotel.Write("./hotel.txt");
+            var readHotelAsBinary = new Hotel();
+            readHotelAsBinary.Read("./hotel.txt");
+            Console.WriteLine(readHotelAsBinary.ToString());
             Console.ReadLine();
 
             // Using binary formatter
-            Console.WriteLine("Saved as inary formatter");
+            Console.WriteLine("--------------------------\nSaved as serialized binary\n--------------------------");
             FileSaver<Hotel>.WriteBinary(myHotel, "./myHotel.bin");
-            var h1 = FileSaver<Hotel>.ReadBinary("./myHotel.bin");
-            Console.WriteLine(h1);
+            var readHotelAsSerialized = FileSaver<Hotel>.ReadBinary("./myHotel.bin");
+            Console.WriteLine(readHotelAsSerialized);
             Console.ReadLine();
 
             // Using XML
-            Console.WriteLine("Saved as XML");
+            Console.WriteLine("------------\nSaved as XML\n------------");
             FileSaver<Hotel>.WriteXML(myHotel, "./myHotel.xml");
-            var h2 = FileSaver<Hotel>.ReadXML("./myHotel.xml");
-            Console.WriteLine(h2);
+            var readHotelAsXml = FileSaver<Hotel>.ReadXML("./myHotel.xml");
+            Console.WriteLine(readHotelAsXml);
             Console.ReadLine();
 
             // Using JSON
-            Console.WriteLine("Saved as JSON");
+            Console.WriteLine("-------------\nSaved as JSON\n-------------");
             FileSaver<Hotel>.WriteJSON(myHotel, "./myHotel.json");
-            var h3 = FileSaver<Hotel>.ReadJSON("./myHotel.json");
-            Console.WriteLine(h3);
+            var readHotelJson = FileSaver<Hotel>.ReadJSON("./myHotel.json");
+            Console.WriteLine(readHotelJson);
             Console.ReadLine();
         }
     }
